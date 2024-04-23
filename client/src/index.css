@@ -5,3 +5,23 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+
+.header {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.profile-icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  height: 8vh; 
+  margin-left: 1320px; 
+  display: flex;
+  margin-top: -78px;
+
+}
+
