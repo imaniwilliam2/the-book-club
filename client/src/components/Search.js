@@ -1,7 +1,9 @@
 function Search() {
     return (
       <>
-        <h1>Search Page</h1>
+        <h1 className='text-7xl'>
+          Search
+        </h1>
       </>
     )
 }
