@@ -11,9 +11,10 @@ class Book(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
+    genre = db.Column(db.String, nullable=False)
     synopsis = db.Column(db.String, nullable=False)
 
-    genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'))
+
     author_id = db.Column(db.Integer, db.ForeignKey('authors.id'))
     
     reviews = db.relationship('Review')

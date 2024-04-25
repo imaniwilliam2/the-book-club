@@ -25,7 +25,7 @@ function NavBar() {
           </div>
           <ul className={menuOpen ? "open" : ""}>
             <li><NavLink to="/"><img src="/assets/icons/home_FILL0_wght400_GRAD0_opsz24.png" alt='home-icon'/>Home</NavLink></li>
-            <li><NavLink to="/search"><img src="/assets/icons/search_FILL0_wght400_GRAD0_opsz24.png" alt='search-icon'/>Search</NavLink></li>
+            <li><NavLink to="/search"><img src="/assets/icons/search_FILL0_wght400_GRAD0_opsz24.png" alt='search-icon'/>View</NavLink></li>
             <li><NavLink to="/chat"><img src="/assets/icons/chat_FILL0_wght400_GRAD0_opsz24.png" alt='chat-icon'/>Chats</NavLink></li>
             <li><NavLink to="/about"><img src="/assets/icons/menu_book_FILL0_wght400_GRAD0_opsz24.png" alt='about-icon'/>About</NavLink></li>
           </ul>

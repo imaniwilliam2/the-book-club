@@ -13,6 +13,10 @@ import Profile from "./components/Profile"
 import ErrorPage from "./components/ErrorPage";
 import ReadPage from "./components/ReadPage";
 import TBReadPage from "./components/TBReadPage";
+import AuthorsList from "./components/AuthorsList";
+import BooksList from "./components/BooksList";
+import BookInfo from "./components/BookInfo";
+import AuthorInfo from "./components/AuthorInfo";
 
 
 const router = createBrowserRouter([
@@ -49,6 +53,23 @@ const router = createBrowserRouter([
             {
                 path: "/tbread",
                 element: <TBReadPage />
+            },
+            {
+                path: "/booklist",
+                element: <BooksList />
+            },
+            {
+                path: "/authorlist",
+                element: <AuthorsList />
+            },
+            {
+                path: "/books/:id",
+                element: <BookInfo />
+
+            },
+            {
+                path: "/authors/:id",
+                element: <AuthorInfo />
             }
         ]
     }
