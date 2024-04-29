@@ -131,7 +131,7 @@ nav ul.open {
   justify-content: flex-start;
 }
 
-.book img, .author  img {
+.book img, .author  img, .read-img, .tbread-img, .author-book-img{
   height: 40vh;
 }
 

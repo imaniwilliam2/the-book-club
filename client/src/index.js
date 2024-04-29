@@ -17,6 +17,9 @@ import AuthorsList from "./components/AuthorsList";
 import BooksList from "./components/BooksList";
 import BookInfo from "./components/BookInfo";
 import AuthorInfo from "./components/AuthorInfo";
+import GenreList from "./components/GenreList";
+import GenreBooks from "./components/GenreBooks";
+import ReviewForm from "./components/ReviewForm";
 
 
 const router = createBrowserRouter([
@@ -70,6 +73,18 @@ const router = createBrowserRouter([
             {
                 path: "/authors/:id",
                 element: <AuthorInfo />
+            },
+            {
+                path: "/genrelist",
+                element: <GenreList />
+            },
+            {
+                path: "/genres/:id",
+                element: <GenreBooks />
+            },
+            {
+                path: "/review-form",
+                element: <ReviewForm />
             }
         ]
     }

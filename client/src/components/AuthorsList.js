@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import Author from "./Author"
 import { useState } from "react";
 import SearchAuthor from "./SearchAuthor"
+import ViewNav from "./ViewNav";
 
 function AuthorsList() {
   
@@ -23,6 +24,7 @@ function AuthorsList() {
 
     return (
       <>
+        <ViewNav />
         <SearchAuthor updateSearch={updateSearch} searchAuthors={searchAuthors} />
         <ul className="authors">{authorComponents}</ul>
       </>

@@ -1,12 +1,10 @@
-import { Link } from 'react-router-dom';
+import ViewNav from './ViewNav';
 
 
 function Search() {
     return (
       <>
-        <h1 className='text-7xl'>Search</h1>
-        <Link to="/booklist">Books</Link>
-        <Link to="/authorlist">Authors</Link>
+        <ViewNav />
       </>
     )
 }

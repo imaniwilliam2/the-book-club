@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import Book from "./Book";
 import { useState } from "react";
 import SearchBooks from "./SearchBooks"
+import ViewNav from "./ViewNav";
 
 function BooksList() {
 
@@ -19,11 +20,12 @@ function BooksList() {
   }
 
   const bookComponents = filteredBooks.map(book => {
-    return <Book key={book.id} book={book} books={books} />
+    return <Book key={book.id} book={book} books={books}/>
   })
 
     return (
       <>
+        <ViewNav />
         <SearchBooks updateSearch={updateSearch} searchBooks={searchBooks} />
         <ul className="books">{bookComponents}</ul>
       </>

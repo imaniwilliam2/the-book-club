@@ -59,8 +59,163 @@ class GetAllGenres(Resource):
     
 api.add_resource(GetAllGenres, '/genres')
 
+class GenresBooks(Resource):
+    def get(self, genre_id):
+        genre = Genre.query.get(genre_id)
 
+        if genre: 
+            books = [genre.to_dict() for genre in genre.books]
+            return books, 200
+        else:
+            return {
+                "error": "Author not found"
+            }, 404
+        
+api.add_resource(GenresBooks, '/genres/<int:genre_id>/books')
+
+class GenreByID(Resource):
+    def get(self, id):
+        response_dict = Genre.query.filter_by(id=id).first().to_dict()
+        response = make_response(
+            response_dict,
+            200
+        )
+        return response
     
+
+api.add_resource(GenreByID, "/genres/<int:id>")
+
+class GetAllRead(Resource):
+    def get(self): 
+        rb = [book.to_dict() for book in Read.query.all()]
+        return make_response(rb, 200)
+    
+    def post(self):
+        try:
+            new_book = Read(
+                title = request.json.get('title'),
+                image = request.json.get('image'),
+                synopsis = request.json.get('synopsis')
+            )
+            db.session.add(new_book)
+            db.session.commit()
+            rb = new_book.to_dict()
+            return make_response(rb, 201)
+        except:
+            rb = {
+                "error" : "Booj must have all inputs completed."
+            }
+            return make_response(rb, 400)
+        
+api.add_resource(GetAllRead, "/read")
+
+class GetAllTBRead(Resource):
+    def get(self): 
+        rb = [book.to_dict() for book in TBRead.query.all()]
+        return make_response(rb, 200)
+    
+    def post(self):
+        try:
+            new_book = TBRead(
+                title = request.json.get('title'),
+                image = request.json.get('image'),
+                synopsis = request.json.get('synopsis')
+            )
+            db.session.add(new_book)
+            db.session.commit()
+            rb = new_book.to_dict()
+            return make_response(rb, 201)
+        except:
+            rb = {
+                "error" : "Book must have all inputs completed."
+            }
+            return make_response(rb, 400)
+        
+api.add_resource(GetAllTBRead, "/tbread")
+
+class ReadBookByID(Resource):
+    def delete(self, id):
+        book = db.session.get(Read, id)
+
+        if(book):
+            db.session.delete(book)
+            db.session.commit()
+            res = {}
+            return make_response(res, 204)
+        else:
+            res = {
+                "error": "Book not found"
+            }
+            return make_response(res, 404)
+        
+
+api.add_resource(ReadBookByID, '/read/<int:id>')
+
+class ToBeReadBookByID(Resource):
+    def delete(self, id):
+        book = db.session.get(TBRead, id)
+
+        if(book):
+            db.session.delete(book)
+            db.session.commit()
+            res = {}
+            return make_response(res, 204)
+        else:
+            res = {
+                "error": "Book not found"
+            }
+            return make_response(res, 404)
+        
+api.add_resource(ToBeReadBookByID, '/tbread/<int:id>')
+
+class AuthorBooks(Resource):
+    def get(self, author_id):
+        author = Author.query.get(author_id)
+
+        if author: 
+            books = [author.to_dict() for author in author.books]
+            return books, 200
+        else:
+            return {
+                "error": "Author not found"
+            }, 404
+        
+api.add_resource(AuthorBooks, '/authors/<int:author_id>/books')
+
+class BookReviews(Resource):
+    def get(self, book_id):
+        book = Book.query.get(book_id)
+
+        if book:
+            reviews = [book.to_dict() for book in book.reviews]
+            return reviews, 200
+        else:
+            return {
+                "error": "Book not found"
+            }, 404
+
+api.add_resource(BookReviews, '/books/<int:book_id>/reviews')
+
+class GetReviews(Resource):
+    
+    def post(self, book_id):
+        try:
+            new_text= request.json.get('text')
+            
+            new_review = Review(text = new_text, book_id=book_id)
+            
+            db.session.add(new_review)
+            db.session.commit()
+            rb = new_review.to_dict()
+            return make_response(rb, 201)
+        except:
+            rb = {
+                "error" : "Book must have all inputs completed."
+            }
+            return make_response(rb, 400)
+        
+api.add_resource(GetReviews, "/reviews/<int:book_id>")
+
 
 
 if __name__ == '__main__':

@@ -16,6 +16,7 @@ class Book(db.Model, SerializerMixin):
 
 
     author_id = db.Column(db.Integer, db.ForeignKey('authors.id'))
+    genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'))
     
     reviews = db.relationship('Review')
 
@@ -53,8 +54,6 @@ class Genre(db.Model, SerializerMixin):
     
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String, nullable=False)
-
-    book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
 
     books = db.relationship('Book')
 
