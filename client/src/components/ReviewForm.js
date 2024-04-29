@@ -1,12 +1,9 @@
 import { useState } from "react"
-import { useOutletContext } from "react-router-dom"
 
-function ReviewForm({ bookId, reviews }) {
+function ReviewForm({ bookId, updateReviewState, addToReviews }) {
     const [form, setForm] = useState({
         text: ""
     })
-
-    const { addToReviews } = useOutletContext()
 
     function updateForm(event) {
         setForm({...form, [event.target.name]: event.target.value})
@@ -17,7 +14,7 @@ function ReviewForm({ bookId, reviews }) {
 
         
         addToReviews({ text: form.text, book_id: bookId }, bookId)
-
+        
         setForm({
             text: ""
         })

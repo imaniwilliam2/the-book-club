@@ -51,7 +51,10 @@ function App() {
       body: JSON.stringify(review)
     })
     .then(res => res.json())
-    .then(reviewDetails => setReviews(prevReviews => [...prevReviews, reviewDetails]))
+    .then(reviewDetails => { 
+      setReviews(prevReviews => [...prevReviews, reviewDetails])
+      return reviewDetails
+  })
   }
 
 
@@ -112,7 +115,7 @@ function App() {
 
 
   return (
-    <>
+    <div className='bg-neutral-50'>
       <NavBar />
       <Outlet context={{
         books: books,
@@ -127,7 +130,7 @@ function App() {
         reviews: reviews,
         addToReviews: addToReviews
       }}/>
-    </>
+    </div>
   )
 }
 

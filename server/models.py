@@ -1,5 +1,7 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm import validates
+
 
 from config import db
 
@@ -14,10 +16,11 @@ class Book(db.Model, SerializerMixin):
     genre = db.Column(db.String, nullable=False)
     synopsis = db.Column(db.String, nullable=False)
 
+
+    author_id = db.Column(db.Integer, db.ForeignKey('authors.id'))
     genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'))
     
     reviews = db.relationship('Review')
-    author = db.relationship('Author', back_populates="books")
 
     @property
     def serialize(self):
@@ -29,6 +32,14 @@ class Book(db.Model, SerializerMixin):
         }
     
 
+    @validates('genre_id')
+    def validate_id(self, key, value):
+        if not value:
+            raise ValueError(f"Books must have a genre id")
+        else:
+            return value
+    
+
 class Author(db.Model, SerializerMixin):
     __tablename__ = "authors"
 
@@ -36,9 +47,8 @@ class Author(db.Model, SerializerMixin):
     name = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
     bio = db.Column(db.String, nullable=False)
-    book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
 
-    books = db.relationship('Book', back_populates="author")
+    books = db.relationship('Book')
 
     @property
     def serialize(self):
@@ -89,6 +99,8 @@ class Read(db.Model, SerializerMixin):
     title = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
     synopsis = db.Column(db.String, nullable=False)
+    favorite = db.Column(db.Boolean, default=False)
+
 
     @property
     def serialize(self):
@@ -96,7 +108,9 @@ class Read(db.Model, SerializerMixin):
             'id': self.id,
             'title': self.title,
             'image': self.image,
-            'synopsis': self.synopsis
+            'synopsis': self.synopsis,
+            'favorite': self.favorite,
+
         }
 
 
@@ -107,6 +121,8 @@ class TBRead(db.Model, SerializerMixin):
     title = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
     synopsis = db.Column(db.String, nullable=False)
+    favorite = db.Column(db.Boolean, default=False)
+
 
     @property
     def serialize(self):
@@ -114,5 +130,6 @@ class TBRead(db.Model, SerializerMixin):
             'id': self.id,
             'title': self.title,
             'image': self.image,
-            'synopsis': self.synopsis
+            'synopsis': self.synopsis,
+            'favorite': self.favorite,
         }

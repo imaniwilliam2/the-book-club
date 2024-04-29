@@ -8,7 +8,6 @@ import App from "./components/App";
 import Search from "./components/Search"
 import Chats from "./components/Chats"
 import Home from "./components/Home"
-import About from "./components/About"
 import Profile from "./components/Profile"
 import ErrorPage from "./components/ErrorPage";
 import ReadPage from "./components/ReadPage";
@@ -39,11 +38,6 @@ const router = createBrowserRouter([
             {
                 path: "/chat",
                 element: <Chats />
-            },
-            {
-                path:"/about",
-                element: <About />
-
             },
             {
                 path:"/profile",

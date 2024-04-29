@@ -1,7 +1,9 @@
+import Display from "./Display";
+
 function Home() {
     return (
       <div>
-        <h1>Home Page</h1>
+        <Display />
       </div>
     )
 }

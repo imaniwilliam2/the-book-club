@@ -1,10 +1,11 @@
-import ViewNav from './ViewNav';
+import BooksList from "./BooksList"
 
 
 function Search() {
     return (
       <>
-        <ViewNav />
+        <BooksList />
+
       </>
     )
 }

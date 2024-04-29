@@ -5,8 +5,8 @@ function Profile() {
     return (
       <>
         <h1>Profile Page</h1>
-        <Link to="/read">Books Read</Link>
-        <Link to="/tbread">Books To Be Read</Link>
+        <Link className="inline-blo ck py-4 px-4 hover:text-orange-800 duration-200"  to="/read">Books Read</Link>
+        <Link className="inline-blo ck py-4 px-4 hover:text-orange-800 duration-200"  to="/tbread">Books To Be Read</Link>
         
       </>
     )

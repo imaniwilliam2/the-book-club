@@ -8,8 +8,10 @@ function BookInfo() {
     const [book, setBook] = useState(null)
     const [reviews, setReviews] = useState([])
 
+    console.log(book)
+
     const { id } = useParams(); 
-    const {addToRead, addToTBRead} = useOutletContext()
+    const {addToRead, addToTBRead, addToReviews} = useOutletContext()
     
    
     useEffect(() => {
@@ -46,6 +48,10 @@ function BookInfo() {
         addToTBRead(book)
     }
 
+    function updateReviewState(newReview) {
+        setReviews([...reviews, newReview])
+    }
+
 
     return (
         <div className="book-info">
@@ -61,13 +67,13 @@ function BookInfo() {
                 <h1 className="book-reviews-title">Book Reviews</h1>
 
                 <ul>
-                    {reviews.map(review => (
-                        <li key={review.id}><p>{review.text}</p></li>
+                    {reviews.map((review, index) => (
+                        <li key={index}><p>{review.text}</p></li>
                     ))}
                 </ul>
             </div>
             {console.log("Book ID:", book.id)}
-            <ReviewForm bookId={book.id} />
+            <ReviewForm bookId={book.id} addToReviews={addToReviews} updateReviewState={updateReviewState}/>
 
             </div>
         </div>

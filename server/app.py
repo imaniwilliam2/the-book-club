@@ -148,6 +148,29 @@ class ReadBookByID(Resource):
             }
             return make_response(res, 404)
         
+    def patch(self, id): 
+        book = Read.query.filter(Read.id == id).first()
+
+        if(book):
+            try:
+                for attr in request.json:
+                    setattr(book, attr, request.json[attr])
+
+                db.session.commit()
+                response = book.to_dict()
+                return make_response(response, 202)
+            except:
+                response = {
+                    "errors": ["validation errors"]
+                }
+                return make_response(response, 400)
+        else:
+            response = {
+                "error": "Book not found"
+            }
+            return make_response(response, 404)
+
+        
 
 api.add_resource(ReadBookByID, '/read/<int:id>')
 
@@ -165,6 +188,28 @@ class ToBeReadBookByID(Resource):
                 "error": "Book not found"
             }
             return make_response(res, 404)
+        
+    def patch(self, id): 
+        book = Read.query.filter(Read.id == id).first()
+
+        if(book):
+            try:
+                for attr in request.json:
+                    setattr(book, attr, request.json[attr])
+
+                db.session.commit()
+                response = book.to_dict()
+                return make_response(response, 202)
+            except:
+                response = {
+                    "errors": ["validation errors"]
+                }
+                return make_response(response, 400)
+        else:
+            response = {
+                "error": "Book not found"
+            }
+            return make_response(response, 404)
         
 api.add_resource(ToBeReadBookByID, '/tbread/<int:id>')
 
