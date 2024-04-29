@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
+import BooksList from "./BooksList"
 
 
 function ViewNav() {
     return (
       <>
-        <h1 className='text-7xl'>View</h1>
+        <BooksList />
         <Link to="/booklist">Books</Link>
         <Link to="/authorlist">Authors</Link>
         <Link to="/genrelist">Genres</Link>

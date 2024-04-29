@@ -14,11 +14,10 @@ class Book(db.Model, SerializerMixin):
     genre = db.Column(db.String, nullable=False)
     synopsis = db.Column(db.String, nullable=False)
 
-
-    author_id = db.Column(db.Integer, db.ForeignKey('authors.id'))
     genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'))
     
     reviews = db.relationship('Review')
+    author = db.relationship('Author', back_populates="books")
 
     @property
     def serialize(self):
@@ -37,8 +36,9 @@ class Author(db.Model, SerializerMixin):
     name = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
     bio = db.Column(db.String, nullable=False)
+    book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
 
-    books = db.relationship('Book')
+    books = db.relationship('Book', back_populates="author")
 
     @property
     def serialize(self):

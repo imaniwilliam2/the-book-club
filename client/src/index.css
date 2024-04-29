@@ -1,10 +1,8 @@
-@import "tailwindcss/base";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss/components";
-
-@import "tailwindcss/utilities";
-
- @font-face{
+@font-face{
   font-family: 'myFont';
   src: url('/fonts/JMH Typewriter-Thin.ttf')
 
@@ -44,97 +42,26 @@ body {
   margin-top: -35px;
 
 }
-
-
-
-
-nav li {
-  height: 75px;
+.nav-bar {
+  right: 30px
 }
-
-nav a{
-  height: 100%;
-  padding: 0 30px;
-  text-decoration: none;
+.nav-bar ul {
   display: flex;
-  align-items: center;
-  color: black;
-  font-size: 3vh;
+  list-style-type: none;
+  padding: 0;
+  top: 20px
 }
 
-nav a:hover{
-background-color: #f0f0f036;
-backdrop-filter: blur(10px);
-
-}
-
-nav ul {
-  display: none;
-}
-
-nav ul li img {
-  margin-right: 10px; /* Adjust as needed */
-}
-
-nav ul.open {
-  display: flex;
-  
-}
 .nav-bar ul li {
-  width: 100%;
-  text-align: center;
+  margin-right: 30px; 
 }
 
-.nav-bar ul li a {
-  margin: 0.2rem 0.5rem ;
-  
-
-}
-
-nav .menu{
-  display: flex;
-  position: absolute;
-  top: 0.75rem;
-  left: 0.5rem;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 2.25rem;
-  height: 2rem;
-}
-
-nav .menu span{
-  height: 0.4rem;
-  width: 100;
-  background-color: black;
-  border-radius: 0.2rem;
-}
-
- nav ul.open li:first-child{
-  margin-left: auto;
-
- }
 
 
-nav ul.open {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  height: 50vh;
-  width: 250px;
-  z-index: 999;
-  background-color: rgba(255, 255, 255, 0.098);
-  backdrop-filter: blur(10px);
-  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1) ;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.book img, .author  img, .read-img, .tbread-img, .author-book-img{
+.book img, .author  img, .read-img, .tbread-img, .author-book-img, .genre-book-img{
   height: 40vh;
 }
 
 .book-info img, .author-info img {
   height: 60vh;
-}
+} 
