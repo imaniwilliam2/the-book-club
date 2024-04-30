@@ -43,7 +43,7 @@ function ReadPage() {
                             <button className="like-button" onClick={() => toggleFavorite(book.id)}>
                                 {isFavorite(book.id) ? "❤️" : "♡"}
                             </button>
-                            <button className="delete-button" onClick={() => handleDelete(book.id)}>Remove</button>
+                            <button className="delete-button" onClick={() => handleDelete(book.id)}>X</button>
                         </li>
                     ))}
                 </ul>

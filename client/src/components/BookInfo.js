@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useOutletContext } from "react-router-dom";
 
+
+
 import ReviewForm from "./ReviewForm";
+import StarRating from "./StarRating";
 
 function BookInfo() {
     const [book, setBook] = useState(null)
@@ -60,6 +63,7 @@ function BookInfo() {
             <p>Genre: {book.genre}</p>
             <p>Synopsis: {book.synopsis}</p>
             <div>
+            <StarRating />
             <button className="add-button" onClick={handleAddToRead}>Read</button>
             <button className="add-tbr-button" onClick={handleAddToTBRead}>Want To Read</button>
 

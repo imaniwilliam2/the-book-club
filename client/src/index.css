@@ -65,3 +65,11 @@ body {
 .book-info img, .author-info img {
   height: 60vh;
 } 
+
+input[type=radio]{
+  display: none;
+}
+
+.star{
+  cursor: pointer;
+}
