@@ -1,15 +1,17 @@
 import NavBar from "./NavBar";
 import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
+import AuthPage from "./AuthPage";
+
 
 function App() {
-
   const [books, setBooks] = useState([])
   const [authors, setAuthors] = useState([])
   const [readBooks, setReadBooks] = useState([])
   const [toBeReadBooks, setToBeReadBooks] = useState([])
   const [genres, setGenres] = useState([])
   const [reviews, setReviews] = useState([])
+  const [user, setUser] = useState(undefined);
 
   useEffect(() => {
     fetch('/books')
@@ -113,25 +115,48 @@ function App() {
     })
   }
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleAuth = (userData) => {
+    localStorage.setItem('user', JSON.stringify(userData));
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  };
 
   return (
     <div className='bg-neutral-50'>
-      <NavBar />
-      <Outlet context={{
-        books: books,
-        authors: authors,
-        addToRead: addToRead,
-        readBooks: readBooks,
-        addToTBRead: addToTBRead,
-        toBeReadBooks: toBeReadBooks,
-        deleteFromRead: deleteFromRead,
-        deleteFromTBRead: deleteFromTBRead,
-        genres: genres,
-        reviews: reviews,
-        addToReviews: addToReviews
-      }}/>
+      {user ? (
+        <>
+          <NavBar onLogout={handleLogout} />
+          <Outlet context={{ 
+            books: books,
+            authors: authors,
+            addToRead: addToRead,
+            readBooks: readBooks,
+            addToTBRead: addToTBRead,
+            toBeReadBooks: toBeReadBooks,
+            deleteFromRead: deleteFromRead,
+            deleteFromTBRead: deleteFromTBRead,
+            genres: genres,
+            reviews: reviews,
+            addToReviews: addToReviews,
+            user:user
+           }} />
+        </>
+      ) : (
+        <AuthPage onAuth={handleAuth} />
+      )}
     </div>
-  )
+  );
 }
 
 export default App;

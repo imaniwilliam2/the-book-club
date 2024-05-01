@@ -2,10 +2,10 @@ import {Link, NavLink} from 'react-router-dom';
 // import { useState } from 'react';
 
 
-function NavBar() {
+function NavBar({ onLogout }) {
 
   return (
-    <div className='bg-neutral-50'>
+    <div className='bg-white'>
     <div className='container py-3 sm:py-0'>
       <div className="flex
       justify-between
@@ -19,6 +19,7 @@ function NavBar() {
             <li><NavLink className="font-bold inline-blo ck py-4 px-4 hover:text-orange-800 duration-200" to="/">Home</NavLink></li>
             <li><NavLink className="font-bold inline-blo ck py-4 px-4 hover:text-orange-800 duration-200"  to="/search">View</NavLink></li>
             <li><NavLink className="font-bold inline-blo ck py-4 px-4 hover:text-orange-800 duration-200" to="/chat">Chat</NavLink></li>
+            <button onClick={onLogout}>Logout</button>
             <li><NavLink to="/profile"><img src='/assets/icons/account_circle_FILL0_wght400_GRAD0_opsz24.png' alt='profile-icon'/></NavLink></li>
           </ul>
         </div>

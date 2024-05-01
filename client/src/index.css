@@ -73,3 +73,39 @@ input[type=radio]{
 .star{
   cursor: pointer;
 }
+
+.genre-container {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 2px solid black;
+  border-radius: 9999px; /* Large value to create a pill shape */
+  background-color: #9a3412;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.genre-container:hover {
+  background-color: #c2410c;
+  color: #cbd5e0;
+  border-color: #000000;
+}
+
+
+
+.ce-my-message-body{
+  background-color: #c2410c !important;
+}
+
+.ce-default-button{
+  color:  #c2410c !important;
+  border: 1px solid #c2410c ;
+}
+
+.ce-chat-header-title{
+  color:  #c2410c !important;
+}
+
+
+/* .ce-my-message-sending-body */

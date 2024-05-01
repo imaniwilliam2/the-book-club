@@ -13,7 +13,7 @@ function StarRating() {
     }, [rating]);
 
     return (
-        <div className="flex">
+        <div className="flex justify-center my-5">
             {[...Array(5)].map((star, index) => {
                 const currentRating = index + 1;
                 return (

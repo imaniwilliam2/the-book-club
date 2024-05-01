@@ -41,7 +41,7 @@ function Display() {
     
 
     return (
-      <div className="min-h-[550px] sm:min-h-[650px] bg-stone-50 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200" >
+      <div className="min-h-[550px] sm:min-h-[650px] bg-neutral-50 flex justify-center items-center dark:bg-gray-950 dark:text-white duration-200" >
         <div className="container pb-8 sm:pb-0">
             <div className="grid grid-cols-1 sm:grid-cols-2">
                 {/* text-content section */}

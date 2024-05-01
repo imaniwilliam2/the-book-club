@@ -1,15 +1,13 @@
 import { Link } from 'react-router-dom';
 
-
 function Profile() {
     return (
-      <>
-        <h1>Profile Page</h1>
-        <Link className="inline-blo ck py-4 px-4 hover:text-orange-800 duration-200"  to="/read">Books Read</Link>
-        <Link className="inline-blo ck py-4 px-4 hover:text-orange-800 duration-200"  to="/tbread">Books To Be Read</Link>
-        
-      </>
-    )
+        <div className="flex justify-center items-center h-full">
+            <Link className="text-lg py-2 px-4 bg-orange-800 text-white rounded-full mr-4 hover:bg-orange-700 transition duration-200 ease-in-out" to="/read">Books Read</Link>
+            <Link className="text-lg py-2 px-4 bg-orange-800 text-white rounded-full hover:bg-orange-700 transition duration-200 ease-in-out" to="/tbread">Books To Be Read</Link>
+        </div>
+    );
 }
   
 export default Profile;
+
