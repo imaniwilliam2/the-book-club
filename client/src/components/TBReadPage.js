@@ -22,6 +22,22 @@ function TBReadPage() {
       ? favorites.filter(favoriteId => favoriteId !== id)
       : [...favorites, id];
     setFavorites(updatedFavorites);
+    
+    fetch(`/tbread/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ favorite: !favorites.includes(id) })
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("Failed to update favorite status");
+      }
+    })
+    .catch(error => {
+      console.error('Error updating favorite status:', error);
+    });
   }
 
   function isFavorite(id) {
