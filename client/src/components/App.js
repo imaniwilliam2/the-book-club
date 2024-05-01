@@ -149,7 +149,7 @@ function App() {
             genres: genres,
             reviews: reviews,
             addToReviews: addToReviews,
-            user:user
+            user:user,
            }} />
         </>
       ) : (
