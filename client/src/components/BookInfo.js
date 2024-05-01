@@ -7,6 +7,7 @@ import StarRating from "./StarRating";
 function BookInfo() {
     const [book, setBook] = useState(null);
     const [reviews, setReviews] = useState([]);
+    const [author, setAuthor] = useState([])
 
     console.log(book);
 
@@ -33,6 +34,16 @@ function BookInfo() {
             })
             .then(data => setReviews(data))
             .catch(error => console.error("Error fetching book reviews:", error));
+
+        fetch(`/books/${id}/authors`)
+            .then(response => {
+                if(response.ok){
+                    return response.json()
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => setAuthor(data))
+            .catch(error => console.error('Error fetching team players:', error ))
     }, [id]);
 
     if (!book) {
@@ -55,6 +66,16 @@ function BookInfo() {
         <div className="container mx-auto px-4 py-8">
             <img className="block mx-auto my-10 w-64 h-auto" src={book.image} alt={book.title} />
             <h2 className="text-center">{book.title}</h2>
+            <div>
+                <h1 className="text-center">Author:</h1>
+                {
+                    author.map(author => (
+                        <li key={author.id}>
+                            <strong>{author.name}</strong>
+                        </li>
+                    ))
+                }
+            </div>
             <p className="text-center">Genre: {book.genre}</p>
             <p className="text-center max-w-lg mx-auto">{book.synopsis}</p>
 

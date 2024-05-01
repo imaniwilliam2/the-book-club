@@ -9,7 +9,7 @@ from flask_restful import Resource
 # Local imports
 from config import app, db, api
 # Add your model imports
-from models import Book, Author, Genre, Review, TBRead, Read
+from models import Book, Author, Genre, Review, TBRead, Read, BookAuthor
 
 
 # Views go here!
@@ -261,6 +261,16 @@ class GetReviews(Resource):
         
 api.add_resource(GetReviews, "/reviews/<int:book_id>")
 
+class BooksAuthor(Resource):
+    def get(self, book_id):
+        book = Book.query.get(book_id)
+        if book:
+            authors = [author.to_dict() for author in book.authors]
+            return authors, 200
+        else:
+            return {"error": "Book not found"}, 404
+        
+api.add_resource(BooksAuthor, '/books/<int:book_id>/authors')
 
 
 if __name__ == '__main__':

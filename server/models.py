@@ -16,11 +16,11 @@ class Book(db.Model, SerializerMixin):
     genre = db.Column(db.String, nullable=False)
     synopsis = db.Column(db.String, nullable=False)
 
-
     author_id = db.Column(db.Integer, db.ForeignKey('authors.id'))
     genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'))
     
     reviews = db.relationship('Review')
+    authors = db.relationship('Author', secondary = 'book_authors')
 
     @property
     def serialize(self):
@@ -28,7 +28,8 @@ class Book(db.Model, SerializerMixin):
             'id': self.id,
             'title': self.title,
             'image': self.image,
-            'synopsis': self.synopsis
+            'synopsis': self.synopsis,
+            'authors': [author.serialize for author in self.authors]
         }
     
 
@@ -133,3 +134,10 @@ class TBRead(db.Model, SerializerMixin):
             'synopsis': self.synopsis,
             'favorite': self.favorite,
         }
+
+class BookAuthor(db.Model, SerializerMixin):
+    __tablename__ = 'book_authors'
+
+    id = db.Column(db.Integer, primary_key=True)
+    book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('authors.id'))
