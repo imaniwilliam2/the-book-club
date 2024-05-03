@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models import db, Book, Author, Genre, Review
+from models import db, Book, Author, Genre, Review, BookAuthor
 
 if __name__ == '__main__':
     fake = Faker()
@@ -31,8 +31,25 @@ if __name__ == '__main__':
         genre1 = Genre(type="Contemporary Romance")
         genre2 = Genre(type="Fantasy")
         genre3 = Genre(type="Coming Of Age")
+        genre4 = Genre(type="Thriller")
+        genre5 = Genre(type="Fiction")
+        genre6 = Genre(type="Non-Fiction")
+        genre7 = Genre(type="Historical Fiction")
+        genre8 = Genre(type="Science Fiction")
+        genre9 = Genre(type="Mystery")
+        genre10 = Genre(type="Young Adult")
+        genre11 = Genre(type="Self-Help")
+        genre12 = Genre(type="Memoir")
+        genre13 = Genre(type="Short Story")
+        genre14 = Genre(type="Horror Fiction")
+        genre15 = Genre(type="Crime Fiction")
+        genre16 = Genre(type="Science")
+        genre17 = Genre(type="Romance Novel")
+        genre18 = Genre(type="Biography")
+        genre19 = Genre(type="Historical Fantasy")
 
-        db.session.add_all([genre1, genre2, genre3])
+
+        db.session.add_all([genre1, genre2, genre3, genre4, genre5, genre6, genre7, genre8, genre9, genre10, genre11, genre12, genre13, genre14, genre15, genre16, genre17, genre18, genre19])
         db.session.commit()
 
         book1 = Book(title="Archer's Voice", image="/assets/books/archers-voice-cover.jpg", genre="Contemporary Romance", synopsis="Bree was looking for peace. Archer was an overlooked man dealing with trauma. One day, everything changed. Bree found the complete opposite and Archer was finally seen.", author_id=2, genre_id=1)
@@ -44,12 +61,18 @@ if __name__ == '__main__':
         db.session.add_all([book1, book2, book3, book4])
         db.session.commit()
 
-        review1 = Review(text="INITIAL REACTION: WILL UPDATE WITH REVIEW LATER BUT KNOW I LOVED THIS. IT KILLED ME AND BROUGHT ME BACK TO LIFE Y'ALL.", book_id=3)
-        review2 = Review(text="I cannot remember ever being this conflicted over a book. There are parts of A Court of Thorns and Roses I really loved, but a lot of parts I really hated", book_id=3)
-        review3 = Review(text="I'm speechless. What am I supposed to say after this?", book_id=3)
+        review1 = Review(rating=4, text="INITIAL REACTION: WILL UPDATE WITH REVIEW LATER BUT KNOW I LOVED THIS. IT KILLED ME AND BROUGHT ME BACK TO LIFE Y'ALL.", book_id=3)
+        review2 = Review(rating=2, text="I cannot remember ever being this conflicted over a book. There are parts of A Court of Thorns and Roses I really loved, but a lot of parts I really hated", book_id=3)
+        review3 = Review(rating=5, text="I'm speechless. What am I supposed to say after this?", book_id=3)
          
         db.session.add_all([review1, review2, review3])
         db.session.commit()
 
+        # book_author1 = BookAuthor(book_id = 1, author_id = 2)
+        # book_author2 = BookAuthor(book_id = 2, author_id = 1)
+        # book_author3 = BookAuthor(book_id = 3, author_id = 3)
+        # book_author4 = BookAuthor(book_id = 4, author_id = 3)
 
+        # db.session.add_all([book_author1, book_author2, book_author3, book_author4])
+        # db.session.commit()
         print("Completed seeding!")

@@ -21,9 +21,15 @@ class GetAllBooks(Resource):
     
 api.add_resource(GetAllBooks, '/books')
 
+from flask import abort
+
 class BookByID(Resource):
     def get(self, id):
-        response_dict = Book.query.filter_by(id=id).first().to_dict()
+        book = Book.query.filter_by(id=id).first()
+        if book is None:
+            abort(404, message="Book not found")
+        
+        response_dict = book.to_dict()
         response = make_response(
             response_dict,
             200
@@ -218,7 +224,7 @@ class AuthorBooks(Resource):
         author = Author.query.get(author_id)
 
         if author: 
-            books = [author.to_dict() for author in author.books]
+            books = [book.to_dict() for book in author.books]
             return books, 200
         else:
             return {
@@ -245,9 +251,10 @@ class GetReviews(Resource):
     
     def post(self, book_id):
         try:
-            new_text= request.json.get('text')
+            new_text = request.json.get('text')
+            new_rating = request.json.get('rating')
             
-            new_review = Review(text = new_text, book_id=book_id)
+            new_review = Review(rating=new_rating, text=new_text, book_id=book_id)
             
             db.session.add(new_review)
             db.session.commit()
@@ -261,16 +268,16 @@ class GetReviews(Resource):
         
 api.add_resource(GetReviews, "/reviews/<int:book_id>")
 
-class BooksAuthor(Resource):
-    def get(self, book_id):
-        book = Book.query.get(book_id)
-        if book:
-            authors = [author.to_dict() for author in book.authors]
-            return authors, 200
-        else:
-            return {"error": "Book not found"}, 404
+# class BooksAuthor(Resource):
+#     def get(self, book_id):
+#         book = Book.query.get(book_id)
+#         if book:
+#             authors = [author.to_dict() for author in book.authors]
+#             return authors, 200
+#         else:
+#             return {"error": "Book not found"}, 404
         
-api.add_resource(BooksAuthor, '/books/<int:book_id>/authors')
+# api.add_resource(BooksAuthor, '/books/<int:book_id>/authors')
 
 
 if __name__ == '__main__':

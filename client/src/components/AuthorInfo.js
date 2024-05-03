@@ -38,7 +38,7 @@ function AuthorInfo() {
         <div className="author-info flex flex-col items-center">
             <img src={author.image} alt={author.name} className="my-8" />
             <h2 className="text-2xl font-bold">{author.name}</h2>
-            <p className="text-center max-w-lg mx-auto">Bio: {author.bio}</p>
+            <p className="text-center max-w-lg mx-auto">{author.bio}</p>
 
             <div className="authors-books-container">
                 <h1 className="authors-books-title text-2xl font-semibold mb-4 text-center border-b-2 border-orange-800 pb-2 my-9">Author's Books</h1>

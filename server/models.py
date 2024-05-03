@@ -1,11 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import validates
-
-
+from sqlalchemy.orm import validates, relationship
 from config import db
-
-# Models go here!
 
 class Book(db.Model, SerializerMixin):
     __tablename__ = "books"
@@ -19,8 +14,9 @@ class Book(db.Model, SerializerMixin):
     author_id = db.Column(db.Integer, db.ForeignKey('authors.id'))
     genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'))
     
+    # authors = relationship('Author', secondary='book_authors', backref='books')
+
     reviews = db.relationship('Review')
-    authors = db.relationship('Author', secondary = 'book_authors')
 
     @property
     def serialize(self):
@@ -29,9 +25,7 @@ class Book(db.Model, SerializerMixin):
             'title': self.title,
             'image': self.image,
             'synopsis': self.synopsis,
-            'authors': [author.serialize for author in self.authors]
         }
-    
 
     @validates('genre_id')
     def validate_id(self, key, value):
@@ -39,7 +33,6 @@ class Book(db.Model, SerializerMixin):
             raise ValueError(f"Books must have a genre id")
         else:
             return value
-    
 
 class Author(db.Model, SerializerMixin):
     __tablename__ = "authors"
@@ -48,8 +41,6 @@ class Author(db.Model, SerializerMixin):
     name = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
     bio = db.Column(db.String, nullable=False)
-
-    books = db.relationship('Book')
 
     @property
     def serialize(self):
@@ -66,8 +57,6 @@ class Genre(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String, nullable=False)
 
-    books = db.relationship('Book')
-
     @property
     def serialize(self):
         return {
@@ -75,12 +64,11 @@ class Genre(db.Model, SerializerMixin):
             'type': self.type
         }
 
-
-
 class Review(db.Model, SerializerMixin):
     __tablename__ = "reviews"
 
     id = db.Column(db.Integer, primary_key=True)
+    rating = db.Column(db.Integer, default = 1)
     text = db.Column(db.String, nullable = False)
 
     book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
@@ -89,9 +77,15 @@ class Review(db.Model, SerializerMixin):
     def serialize(self):
         return {
             'id': self.id,
+            'rating': self.rating,
             'text': self.text
         }
-
+    
+    @validates('rating')
+    def validate_rating(self, key, value):
+        if value > 5:
+            raise ValueError("Rating must be between 1 and 5")
+        return value
 
 class Read(db.Model, SerializerMixin):
     __tablename__ = "reads"
@@ -102,7 +96,6 @@ class Read(db.Model, SerializerMixin):
     synopsis = db.Column(db.String, nullable=False)
     favorite = db.Column(db.Boolean, default=False)
 
-
     @property
     def serialize(self):
         return {
@@ -111,9 +104,7 @@ class Read(db.Model, SerializerMixin):
             'image': self.image,
             'synopsis': self.synopsis,
             'favorite': self.favorite,
-
         }
-
 
 class TBRead(db.Model, SerializerMixin):
     __tablename__ = "tbreads"
@@ -123,7 +114,6 @@ class TBRead(db.Model, SerializerMixin):
     image = db.Column(db.String, nullable=False)
     synopsis = db.Column(db.String, nullable=False)
     favorite = db.Column(db.Boolean, default=False)
-
 
     @property
     def serialize(self):

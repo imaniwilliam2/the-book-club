@@ -70,7 +70,7 @@ function Trending() {
                         dark:bg-gray-800 hover:bg-orange-700 
                         dark:hover:bg-orange-700 hover:text-white
                         relative shadow-xl duration-high group
-                        max-w-[300px] my-8">
+                        max-w-[300px] my-8" key={book.id}>
                             <div className="h-[100px]">
                                 <img src={book.img} alt=""
                                 className="max-w-[100px] black mx-auto transform -translate-y-14 group-hover:scale-105 duration-300 shadow-md"

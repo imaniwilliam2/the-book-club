@@ -132,6 +132,7 @@ function App() {
     setUser(null);
   };
 
+  console.log(books)
   return (
     <div className='bg-neutral-50'>
       {user ? (
