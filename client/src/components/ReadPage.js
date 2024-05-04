@@ -52,7 +52,7 @@ function ReadPage() {
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-semibold mb-4">Books Read</h1>
             {readBooks.length === 0 ? (
-                <p>No books read yet.</p>
+                <p>No books added yet.</p>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                     {readBooks.map((book) => (
