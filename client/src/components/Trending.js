@@ -58,8 +58,7 @@ function Trending() {
                 </p>
                 <h1 className="text-3xl font-bold">Best Sellers</h1>
                 <p className="text-xs text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa
-                    iure, corporis{ " "}
+                    Top Picks in the Month of May{" "}
                 </p>
             </div>
             {/* card section  */}

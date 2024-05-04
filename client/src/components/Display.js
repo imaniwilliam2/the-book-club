@@ -1,8 +1,8 @@
 import { useState } from "react"
 
 const book1 = "/assets/books/tomorrow.jpg"
-const book2 = "/assets/books/acotar.jpg"
-const book3 = "/assets/books/archers-voice-cover.jpg"
+const book2 = "/assets/books/life.jpeg"
+const book3 = "/assets/books/seven.jpg"
 
 const ImageList = [
     {
@@ -14,21 +14,21 @@ const ImageList = [
     {
         id: 2,
         img: book2,
-        title: "A Court Of Thorns and Roses",
-        description: "When nineteen-year-old huntress Feyre kills a wolf in the woods, a terrifying creature arrives to demand retribution. Dragged to a treacherous magical land she knows about only from legends, Feyre discovers that her captor is not truly a beast, but one of the lethal, immortal faeries who once ruled her world."
+        title: "A Little Life",
+        description: "When four classmates from a small Massachusetts college move to New York to make their way, they're broke, adrift, and buoyed only by their friendship and ambition. There is kind, handsome Willem, an aspiring actor; JB, a quick-witted, sometimes cruel Brooklyn-born painter seeking entry to the art world; Malcolm, a frustrated architect at a prominent firm; and withdrawn, brilliant, enigmatic Jude, who serves as their center of gravity."
     },
     {
         id: 3,
         img: book3,
-        title: "Archers Voice",
-        description: "Bree was looking for peace. Archer was an overlooked man dealing with trauma. One day, everything changed. Bree found the complete opposite and Archer was finally seen."
+        title: "The Seven Husbands of Evelyn Hugo",
+        description: "Aging and reclusive Hollywood movie icon Evelyn Hugo is finally ready to tell the truth about her glamorous and scandalous life. But when she chooses unknown magazine reporter Monique Grant for the job, no one is more astounded than Monique herself. Why her? Why now? Monique is not exactly on top of the world. Her husband has left her, and her professional life is going nowhere. Regardless of why Evelyn has selected her to write her biography, Monique is determined to use this opportunity to jumpstart her career."
     },
 ]
 
 function Display() {
 
     const [imageId, setImageId] = useState("/assets/books/tomorrow.jpg")
-    const [title, setTitle] = useState("In Love but Never Lovers")
+    const [title, setTitle] = useState("Tomorrow and Tomorrow and Tomorrow")
     const [description, setDescription] = useState("On a bitter-cold day, in the December of his junior year at Harvard, Sam Masur exits a subway car and sees, amid the hordes of people waiting on the platform, Sadie Green. He calls her name. For a moment, she pretends she hasn't heard him, but then, she turns, and a game begins: a legendary collaboration that will launch them to stardom.")
 
     // const bgImage = {
@@ -62,7 +62,7 @@ function Display() {
                         />
                     </div>
                     {/* other image list  */}
-                    <div className="flex lg:flex-col lg:top-1/2 lg:-translate-y-1/2 lg:py-2 justify-center gap-4 absolute -bottom-[40px] lg:-right-1 bg-white rounded-full">
+                    <div className="flex lg:flex-col lg:top-1/2 lg:-translate-y-1/2 lg:py-2 justify-center gap-4 absolute -bottom-[40px] lg:-right-1 bg-neutral-50 rounded-full">
                         {ImageList.map((data) => (
                             <img src={data.img}
                             key={data.id}

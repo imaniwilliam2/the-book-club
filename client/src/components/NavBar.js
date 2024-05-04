@@ -18,7 +18,7 @@ const DropDownLinks = [
 function NavBar({ onLogout }) {
 
   return (
-    <div className='bg-white shadow-lg'>
+    <div className='bg-white shadow-lg sticky top-0 z-50'>
     <div className='container py-3 sm:py-0'>
       <div className="flex
       justify-between
@@ -53,9 +53,9 @@ function NavBar({ onLogout }) {
             </ul>
           </div>
           </li>
-            <li><NavLink className="font-bold inline-blo ck py-4 px-4 hover:text-orange-800 duration-200" to="/">Home</NavLink></li>
-            <li><NavLink className="font-bold inline-blo ck py-4 px-4 hover:text-orange-800 duration-200"  to="/search">View</NavLink></li>
-            <li><NavLink className="font-bold inline-blo ck py-4 px-4 hover:text-orange-800 duration-200" to="/chat">Chat</NavLink></li>
+            <li><NavLink className="font-bold inline-blo ck py-4 px-4 hover:text-orange-800 duration-200" to="/"><img src='/assets/icons/home_FILL0_wght400_GRAD0_opsz24.png' alt=""/></NavLink></li>
+            <li><NavLink className="font-bold inline-blo ck py-4 px-4 hover:text-orange-800 duration-200"  to="/search"><img src='/assets/icons/search_FILL0_wght400_GRAD0_opsz24.png' alt=""/></NavLink></li>
+            <li><NavLink className="font-bold inline-blo ck py-4 px-4 hover:text-orange-800 duration-200" to="/chat"><img src='/assets/icons/chat_FILL0_wght400_GRAD0_opsz24.png' alt=""/></NavLink></li>
           </ul>
         </div>
       </div>

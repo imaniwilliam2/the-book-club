@@ -46,9 +46,7 @@ function AuthorInfo() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {books.map(book => (
                         <div key={book.id} className="flex flex-col items-center">
-                            <img src={book.image} alt={book.title} className="w-auto h-16"  />
-
-                            <h3 className="text-lg font-semibold hover:underline "><Link to={`/books/${book.id}`}>{book.title}</Link></h3>
+                            <Link to={`/books/${book.id}`} className="transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"><img src={book.image} alt={book.title}/></Link>
                         </div>
                     ))}
                 </div>

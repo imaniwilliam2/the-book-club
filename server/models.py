@@ -42,6 +42,9 @@ class Author(db.Model, SerializerMixin):
     image = db.Column(db.String, nullable=False)
     bio = db.Column(db.String, nullable=False)
 
+
+    books = db.relationship('Book')
+
     @property
     def serialize(self):
         return {
@@ -56,6 +59,9 @@ class Genre(db.Model, SerializerMixin):
     
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String, nullable=False)
+
+    books = db.relationship('Book')
+
 
     @property
     def serialize(self):
