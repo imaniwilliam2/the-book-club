@@ -1,15 +1,15 @@
 import { useState } from "react"
 
-const book1 = "/assets/books/tomorrow.jpg"
+const book1 = "/assets/books/water.jpg"
 const book2 = "/assets/books/life.jpeg"
-const book3 = "/assets/books/seven.jpg"
+const book3 = "/assets/books/fourth.jpg"
 
 const ImageList = [
     {
         id: 1,
         img: book1,
-        title: "Tomorrow and Tomorrow and Tomorrow",
-        description: "On a bitter-cold day, in the December of his junior year at Harvard, Sam Masur exits a subway car and sees, amid the hordes of people waiting on the platform, Sadie Green. He calls her name. For a moment, she pretends she hasn't heard him, but then, she turns, and a game begins: a legendary collaboration that will launch them to stardom."
+        title: "The Covenant Of Water",
+        description: "A shimmering evocation of a bygone India and of the passage of time itself, The Covenant of Water is a hymn to progress in medicine and to human understanding, and a humbling testament to the hardships undergone by past generations for the sake of those alive today. Imbued with humor, deep emotion, and the essence of life, it is one of the most masterful literary novels published in recent years."
     },
     {
         id: 2,
@@ -20,16 +20,16 @@ const ImageList = [
     {
         id: 3,
         img: book3,
-        title: "The Seven Husbands of Evelyn Hugo",
-        description: "Aging and reclusive Hollywood movie icon Evelyn Hugo is finally ready to tell the truth about her glamorous and scandalous life. But when she chooses unknown magazine reporter Monique Grant for the job, no one is more astounded than Monique herself. Why her? Why now? Monique is not exactly on top of the world. Her husband has left her, and her professional life is going nowhere. Regardless of why Evelyn has selected her to write her biography, Monique is determined to use this opportunity to jumpstart her career."
+        title: "Fourth Wing",
+        description: "Twenty-year-old Violet Sorrengail was supposed to enter the Scribe Quadrant, living a quiet life among books and history. Now, the commanding general—also known as her tough-as-talons mother—has ordered Violet to join the hundreds of candidates striving to become the elite of Navarre: dragon riders."
     },
 ]
 
 function Display() {
 
-    const [imageId, setImageId] = useState("/assets/books/tomorrow.jpg")
-    const [title, setTitle] = useState("Tomorrow and Tomorrow and Tomorrow")
-    const [description, setDescription] = useState("On a bitter-cold day, in the December of his junior year at Harvard, Sam Masur exits a subway car and sees, amid the hordes of people waiting on the platform, Sadie Green. He calls her name. For a moment, she pretends she hasn't heard him, but then, she turns, and a game begins: a legendary collaboration that will launch them to stardom.")
+    const [imageId, setImageId] = useState("/assets/books/water.jpg")
+    const [title, setTitle] = useState("The Covenant Of Water")
+    const [description, setDescription] = useState("A shimmering evocation of a bygone India and of the passage of time itself, The Covenant of Water is a hymn to progress in medicine and to human understanding, and a humbling testament to the hardships undergone by past generations for the sake of those alive today. Imbued with humor, deep emotion, and the essence of life, it is one of the most masterful literary novels published in recent years.")
 
     // const bgImage = {
     //     backgroundImage: "url(/assets/vectorimg.jpeg)",

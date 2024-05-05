@@ -1,46 +1,50 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
-const book1 = "/assets/books/tomorrow.jpg"
-const book2 = "/assets/books/acotar.jpg"
-const book3 = "/assets/books/archers-voice-cover.jpg"
+const book1 = "/assets/books/funny.jpeg"
+const book2 = "/assets/books/women.jpg"
+const book3 = "/assets/books/acotar.jpg"
+const book4 = "/assets/books/calamity.jpg"
+const book5 = "/assets/books/generation.jpg"
+const book6 = "/assets/books/score.jpg"
+
 
 const ImageList = [
     {
         id: 1,
         img: book1,
-        title: "Tomorrow and Tomorrow and Tomorrow",
-        author: "On a bitter-cold day, in the December of his junior year at Harvard, Sam Masur exits a subway car and sees, amid the hordes of people waiting on the platform, Sadie Green. He calls her name. For a moment, she pretends she hasn't heard him, but then, she turns, and a game begins: a legendary collaboration that will launch them to stardom."
+        title: "Funny Story",
+        description: "After their exes run off together, Daphne and Miles form a friendship and concoct a plan involving misleading photos."
     },
     {
         id: 2,
-        img: book2,
-        title: "A Court Of Thorns and Roses",
-        author: "When nineteen-year-old huntress Feyre kills a wolf in the woods, a terrifying creature arrives to demand retribution. Dragged to a treacherous magical land she knows about only from legends, Feyre discovers that her captor is not truly a beast, but one of the lethal, immortal faeries who once ruled her world."
+        img: book5,
+        title: "The Anxious Generation",
+        description: "A co-author of “The Coddling of the American Mind” looks at the mental health impacts that a phone-based life has on children."
     },
     {
         id: 3,
         img: book3,
-        title: "Archers Voice",
-        author: "Bree was looking for peace. Archer was an overlooked man dealing with trauma. One day, everything changed. Bree found the complete opposite and Archer was finally seen."
+        title: "A Court Of Thorns and Roses",
+        description: "After killing a wolf in the woods, Feyre is taken from her home and placed inside the world of the Fae."
     },
     {
         id: 4,
-        img: book1,
-        title: "Tomorrow and Tomorrow and Tomorrow",
-        author: "On a bitter-cold day, in the December of his junior year at Harvard, Sam Masur exits a subway car and sees, amid the hordes of people waiting on the platform, Sadie Green. He calls her name. For a moment, she pretends she hasn't heard him, but then, she turns, and a game begins: a legendary collaboration that will launch them to stardom."
+        img: book4,
+        title: "A Calamity Of Souls",
+        description: "Lawyers from different backgrounds represent a Black man charged with killing a wealthy white couple in Virginia in 1968."
     },
     {
         id: 5,
         img: book2,
-        title: "A Court Of Thorns and Roses",
-        author: "When nineteen-year-old huntress Feyre kills a wolf in the woods, a terrifying creature arrives to demand retribution. Dragged to a treacherous magical land she knows about only from legends, Feyre discovers that her captor is not truly a beast, but one of the lethal, immortal faeries who once ruled her world."
+        title: "The Women",
+        description: "In 1965, a nursing student follows her brother to serve during the Vietnam War and returns to a divided America."
     },
     {
         id: 6,
-        img: book3,
-        title: "Archers Voice",
-        author: "Bree was looking for peace. Archer was an overlooked man dealing with trauma. One day, everything changed. Bree found the complete opposite and Archer was finally seen."
+        img: book6,
+        title: "The Body Keeps The Score",
+        description: "How trauma affects the body and mind, and innovative treatments for recovery."
     },
 ]
 
@@ -58,7 +62,7 @@ function Trending() {
                 </p>
                 <h1 className="text-3xl font-bold">Best Sellers</h1>
                 <p className="text-xs text-gray-400">
-                    Top Picks in the Month of May{" "}
+                    New York Times Best Selling Books to Date{" "}
                 </p>
             </div>
             {/* card section  */}
@@ -89,7 +93,7 @@ function Trending() {
                                     className="text-yellow-500" />
                                 </div>
                                 <h1 className="text-xl font-bold">{book.title}</h1>
-                                <p className="text-gray-500 group-hover:text-white duration-300 text-sm line-clamp-2">{book.author}</p>
+                                <p className="text-gray-500 group-hover:text-white duration-300 text-sm">{book.description}</p>
                             </div>
                         </div>
                     ))

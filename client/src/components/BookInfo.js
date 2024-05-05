@@ -55,7 +55,7 @@ function BookInfo() {
     return (
         <div className="container mx-auto px-4 py-8">
             <img className="block mx-auto my-10 w-64 h-auto shadow-lg shadow-color-black md" src={book.image} alt={book.title} />
-            <h2 className="text-center">{book.title}</h2>
+            <h2 className="text-2xl text-center">{book.title}</h2>
             <p className="text-center">Genre: {book.genre}</p>
             <p className="text-center max-w-lg mx-auto">{book.synopsis}</p>
 
