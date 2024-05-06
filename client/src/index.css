@@ -108,3 +108,17 @@ input[type=radio]{
 }
 
 
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.next {
+  left: 600px; /* Adjust as needed */
+}
+
+.prev {
+  right: 600px; /* Adjust as needed */
+}

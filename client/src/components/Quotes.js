@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const QuoteList = [
     {
@@ -133,27 +134,56 @@ const QuoteList = [
 ]
 
 function Quotes() {
+
+    const NextArrow = ({ onClick }) => {
+        return (
+            <div className="arrow next" onClick={onClick}>
+                <IoIosArrowForward />
+            </div>
+        )
+    } 
+
+    const PrevArrow = ({ onClick }) => {
+        return (
+            <div className="arrow prev" onClick={onClick}>
+                <IoIosArrowBack />
+            </div>
+        )
+    }
+
     const settings = {
-      dots: false, // Remove dots
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000
-    };
+        dots: false, 
+        infinite: true,
+        speed: 700,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 7000,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />
+      };
   
-    return (
+      return (
         <div className="mt-8 mb-8">
-            <h1 className="text-5xl font-bold mb-6 text-center">Famous Quotes</h1>
+            <div className="text-center mb-17 max-w-[400px] mx-auto">
+                <p
+                className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-orange-800 to-orange-800"
+                >
+                    Famous Authors
+                </p>
+                <h1 className="text-3xl font-bold">Renowed Quotes</h1>
+                <p className="text-xs text-gray-400">
+                    Iconic Books{" "}
+                </p>
+            </div>
           <div className="max-w-lg mx-auto p-6">
-            <div className="">
+            <div className="slider-container">
               <Slider {...settings}>
-                {QuoteList.map(quote => (
+                {QuoteList.map((quote) => (
                   <div key={quote.id} className="px-4">
                     <div className=" p-6">
                       <p className="text-lg font-semibold mb-4">"{quote.text}"</p>
-                      <p className="text-sm italic text-gray-600">- {quote.author}, {quote.book}</p>
+                      <p className="text-sm italic text-gray-600">-{quote.book}, By {quote.author}</p>
                     </div>
                   </div>
                 ))}
@@ -162,6 +192,6 @@ function Quotes() {
           </div>
         </div>
       );
-  }
-  
-  export default Quotes;
+    };
+    
+    export default Quotes;

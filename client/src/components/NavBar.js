@@ -43,13 +43,13 @@ function NavBar({ onLogout }) {
                 DropDownLinks.map((data, index) => (
                   <li key={index}>
                     <a href={data.link}
-                    className='inline-block w-full rounded-md p-2 hover:bg-orange-700'
+                    className='inline-block w-full rounded-md p-2 hover:bg-orange-700 hover:text-white'
                     >
                     {data.name}</a>
                   </li>
                 ))
               }
-              <button className='inline-block w-full rounded-md p-2 hover:bg-orange-700' onClick={onLogout}>Logout</button>
+              <button className='inline-block w-full rounded-md p-2 hover:bg-orange-700 hover:text-white' onClick={onLogout}>Logout</button>
             </ul>
           </div>
           </li>
