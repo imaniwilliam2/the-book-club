@@ -8,10 +8,12 @@ function Chats() {
     user.username,
     user.secret
   )
+
+  const userOffset = -4;
     return (
       <div className="bg-neutral-50" style={{ height: '90vh' }}>
-        <MultiChatSocket {...chatProps} />
-        <MultiChatWindow {...chatProps} style={{ height: '100%' }} />
+        <MultiChatSocket {...chatProps} timezoneOffset={userOffset}/>
+        <MultiChatWindow {...chatProps} timezoneOffset={userOffset} style={{ height: '100%' }} />
       </div>
     )
 }
