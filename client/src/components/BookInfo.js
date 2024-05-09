@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom"; // Import Link
 import { useOutletContext } from "react-router-dom";
 import ReviewForm from "./ReviewForm";
 import { FaStar } from 'react-icons/fa';
 import { IoPersonCircle } from "react-icons/io5";
-
-
 
 function BookInfo() {
     const [book, setBook] = useState(null);
     const [reviews, setReviews] = useState([]);
 
     const { id } = useParams();
-    const { addToRead, addToTBRead, addToReviews } = useOutletContext();
+    const { addToRead, addToTBRead, addToReviews, genres, authors } = useOutletContext();
 
     useEffect(() => {
         fetch(`/books/${id}`)
@@ -56,7 +54,40 @@ function BookInfo() {
         <div className="container mx-auto px-4 py-8">
             <img className="block mx-auto my-10 w-64 h-auto shadow-lg shadow-color-black md" src={book.image} alt={book.title} />
             <h2 className="text-2xl text-center">{book.title}</h2>
-            <p className="text-center">Genre: {book.genre}</p>
+            <p className="text-center">
+                Author:{" "}
+                {authors.map((author) => {
+                    if (author.id === book.author_id) {
+                        return (
+                            <Link
+                                key={author.id}
+                                to={`/authors/${author.id}`}
+                                className="text-black-500 hover:underline"
+                            >
+                                {author.name}
+                            </Link>
+                        );
+                    }
+                    return null;
+                })}
+            </p>
+            <p className="text-center">
+                Genre:{" "}
+                {genres.map((genre) => {
+                    if (genre.type === book.genre) {
+                        return (
+                            <Link
+                                key={genre.id}
+                                to={`/genres/${genre.id}`}
+                                className="text-black-500 hover:underline"
+                            >
+                                {book.genre}
+                            </Link>
+                        );
+                    }
+                    return null;
+                })}
+            </p>
             <p className="text-center max-w-lg mx-auto">{book.synopsis}</p>
 
             <div className="flex justify-center mt-8 space-x-4">

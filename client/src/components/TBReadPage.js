@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function TBReadPage() {
-  const { toBeReadBooks, deleteFromTBRead } = useOutletContext();
+  const { toBeReadBooks, deleteFromTBRead, books } = useOutletContext();
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
@@ -55,18 +55,22 @@ function TBReadPage() {
         <p>No books added yet.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {toBeReadBooks.map((book) => (
-            <div key={book.id} className="flex flex-col items-center bg-white p-4 rounded-md shadow-md">
-              <img className="w-32 h-auto mb-2" src={book.image} alt={book.title} />
-              <h2 className="text-lg font-semibold mb-2"><Link to={`/books/${book.id}`}>{book.title}</Link></h2>
-              <div className="flex items-center space-x-2 mb-2">
-                <button className={`like-button ${isFavorite(book.id) ? 'text-red-500' : 'text-gray-500'}`} onClick={() => toggleFavorite(book.id)}>
-                  {isFavorite(book.id) ? "❤️" : "♡"}
-                </button>
-                <button className="delete-button bg-red-500 text-white px-2 py-1 rounded-md" onClick={() => handleDelete(book.id)}>Delete</button>
+          {toBeReadBooks.map((tbReadBook) => {
+            const book = books.find(book => book.title === tbReadBook.title);
+            if (!book) return null; 
+            return (
+              <div key={tbReadBook.id} className="flex flex-col items-center bg-white p-4 rounded-md shadow-md">
+                <img className="w-32 h-auto mb-2" src={book.image} alt={book.title} />
+                <h2 className="text-lg font-semibold mb-2"><Link to={`/books/${book.id}`}>{book.title}</Link></h2>
+                <div className="flex items-center space-x-2 mb-2">
+                  <button className={`like-button ${isFavorite(tbReadBook.id) ? 'text-red-500' : 'text-gray-500'}`} onClick={() => toggleFavorite(tbReadBook.id)}>
+                    {isFavorite(tbReadBook.id) ? "❤️" : "♡"}
+                  </button>
+                  <button className="delete-button bg-red-500 text-white px-2 py-1 rounded-md" onClick={() => handleDelete(tbReadBook.id)}>Delete</button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
