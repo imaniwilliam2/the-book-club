@@ -5,11 +5,11 @@ import { FaCaretDown } from 'react-icons/fa';
 
 const DropDownLinks = [
   {
-    name: "Books Read",
+    name: "Read",
     link: "/read"
   },
   {
-    name: "Book To Be Read",
+    name: "Want To Read",
     link: "/tbread"
   }
 ]
